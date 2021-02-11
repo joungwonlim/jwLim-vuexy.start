@@ -13,7 +13,10 @@
     </div>
 
     <!-- Form: Personal Info Form -->
-    <b-form class="mt-1">
+    <b-form
+      class="mt-1"
+      @submit.prevent="onSubmit"
+    >
       <b-row>
 
         <!-- Field: Birth Date -->
@@ -254,6 +257,7 @@
       <b-row class="mt-2">
         <b-col>
           <b-button
+            type="submit"
             variant="primary"
             class="mb-1 mb-sm-0 mr-0 mr-sm-1"
             :block="$store.getters['app/currentBreakPoint'] === 'xs'"
@@ -277,37 +281,48 @@ import {
   BRow, BCol, BForm, BFormGroup, BFormInput, BFormRadioGroup, BFormCheckboxGroup, BButton,
 } from 'bootstrap-vue'
 import flatPickr from 'vue-flatpickr-component'
-import { ref } from '@vue/composition-api'
+// import { ref } from '@vue/composition-api'
 import vSelect from 'vue-select'
+import store from '@/store'
+// Notification
+import { useToast } from 'vue-toastification/composition'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 
 export default {
   components: {
     BRow, BCol, BForm, BFormGroup, flatPickr, BFormInput, vSelect, BFormRadioGroup, BFormCheckboxGroup, BButton,
   },
-  setup() {
-    const userDataInfo = ref({
-      dob: null,
-      mobile: '+6595895857',
-      website: 'https://rowboat.com/insititious/Angelo',
-      language: 'French',
-      gender: 'female',
-      contactOptions: ['Email', 'Message'],
-      addressLine1: 'A-65, Belvedere Streets',
-      addressLine2: '',
-      postcode: '',
-      city: 'New York',
-      state: '',
-      country: '',
-    })
+  props: {
+    userData: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup(props) {
+    const toast = useToast()
+    // const userDataInfo = ref({
+    //   dob: null,
+    //   mobile: '',
+    //   website: '',
+    //   language: '',
+    //   gender: '',
+    //   contactOptions: ['Email'],
+    //   addressLine1: '',
+    //   addressLine2: '',
+    //   postcode: '',
+    //   city: '',
+    //   state: '',
+    //   country: '',
+    // })
+
+    const { info } = props.userData
+    const userDataInfo = info
 
     const languageOptions = [
       'English',
-      'Spanish',
       'French',
-      'Russian',
       'German',
-      'Arabic',
-      'Sanskrit',
+      'Portuguese',
     ]
 
     const genderOptions = [
@@ -317,11 +332,29 @@ export default {
 
     const contactOptionsOptions = ['Email', 'Message', 'Phone']
 
+    const onSubmit = () => {
+      // console.log('userData', props.userData)
+      store.dispatch('app-user/updateUser', props.userData)
+        .then(() => {
+          toast({
+            component: ToastificationContent,
+            props: {
+              title: 'Success update user account',
+              icon: 'AlertTriangleIcon',
+              variant: 'primary',
+            },
+          })
+        })
+    }
+
     return {
-      userDataInfo,
       languageOptions,
       genderOptions,
       contactOptionsOptions,
+
+      userDataInfo,
+
+      onSubmit,
     }
   },
 }

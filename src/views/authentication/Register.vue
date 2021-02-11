@@ -7,7 +7,7 @@
         <vuexy-logo />
 
         <h2 class="brand-text text-primary ml-1">
-          Vuexy
+          Willy Dreams
         </h2>
       </b-link>
       <!-- /Brand logo-->
@@ -271,6 +271,7 @@ export default {
             password: this.password,
           })
             .then(response => {
+              // console.log(response.data)
               useJwt.setToken(response.data.accessToken)
               useJwt.setRefreshToken(response.data.refreshToken)
               localStorage.setItem('userData', JSON.stringify(response.data.userData))
@@ -278,7 +279,8 @@ export default {
               this.$router.push('/')
             })
             .catch(error => {
-              this.$refs.registerForm.setErrors(error.response.data.error)
+              // this.$refs.registerForm.setErrors(error.response.data.error)
+              this.$refs.registerForm.setErrors(error.message)
             })
         }
       })

@@ -1,5 +1,8 @@
 <template>
-  <b-form>
+  <b-form
+    class="p-2"
+    @submit.prevent="onSubmit"
+  >
     <b-row>
       <b-col
         v-for="socialField in socialInputs"
@@ -30,11 +33,12 @@
 
       <b-col class="mt-2">
         <b-button
+          type="submit"
           variant="primary"
           class="mb-1 mb-sm-0 mr-0 mr-sm-1"
           :block="$store.getters['app/currentBreakPoint'] === 'xs'"
         >
-          Save Changes
+          Save Changes1
         </b-button>
         <b-button
           variant="outline-secondary"
@@ -49,6 +53,9 @@
 
 <script>
 import {
+  ref,
+} from '@vue/composition-api'
+import {
   BRow, BCol, BForm, BFormGroup, BFormInput, BButton, BInputGroup, BInputGroupPrepend,
 } from 'bootstrap-vue'
 
@@ -57,14 +64,16 @@ export default {
     BRow, BCol, BForm, BFormGroup, BFormInput, BButton, BInputGroup, BInputGroupPrepend,
   },
   setup() {
-    const userDataSocial = {
-      twitter: 'https://www.twitter.com/adoptionism744',
-      facebook: 'https://www.facebook.com/adoptionism664',
-      instagram: 'https://www.instagram.com/adopt-ionism744',
-      github: 'https://www.github.com/madop818',
-      codepen: 'https://www.codepen.com/adoptism243',
-      slack: '@adoptionism744',
-    }
+    const userDataSocial = ref(
+      {
+        twitter: 'https://www.twitter.com/adoptionism744',
+        facebook: 'https://www.facebook.com/adoptionism664',
+        instagram: 'https://www.instagram.com/adopt-ionism744',
+        github: 'https://www.github.com/madop818',
+        codepen: 'https://www.codepen.com/adoptism243',
+        slack: '@adoptionism744',
+      },
+    )
 
     // ? dataField is field name of `userDataSocial` object
     const socialInputs = [
@@ -100,9 +109,20 @@ export default {
       },
     ]
 
+    const onSubmit = () => {
+      console.log('userDataSocial', userDataSocial)
+      // store.dispatch('app-user/updataUser', userDataSocial.value)
+      //   .then(() => {
+      //   })
+      //   .catch(() => {
+
+      //   })
+    }
+
     return {
       userDataSocial,
       socialInputs,
+      onSubmit,
     }
   },
 }

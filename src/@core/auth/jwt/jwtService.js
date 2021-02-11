@@ -1,5 +1,6 @@
 import jwtDefaultConfig from './jwtDefaultConfig'
 
+console.log('here 3', '@core/auth/jwt/jwtService.js')
 export default class JwtService {
   // Will be used by this service for making API calls
   axiosIns = null

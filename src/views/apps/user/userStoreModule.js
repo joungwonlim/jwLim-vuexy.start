@@ -9,7 +9,7 @@ export default {
     fetchUsers(ctx, queryParams) {
       return new Promise((resolve, reject) => {
         axios
-          .get('/apps/user/users', { params: queryParams })
+          .get('/app/user/users', { params: queryParams })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -17,7 +17,7 @@ export default {
     fetchUser(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .get(`/apps/user/users/${id}`)
+          .get(`/app/user/users/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -25,10 +25,23 @@ export default {
     addUser(ctx, userData) {
       return new Promise((resolve, reject) => {
         axios
-          .post('/apps/user/users', { user: userData })
+          .post('/app/user/users', { user: userData })
+          .then(response => {
+            // console.log(response)
+            resolve(response)
+          })
+          .catch(error => reject(error))
+      })
+    },
+    updateUser(ctx, userData) {
+      // console.log(userData.id)
+      return new Promise((resolve, reject) => {
+        axios
+          .put(`/app/user/users/${userData.id}`, { userData })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
     },
+
   },
 }

@@ -47,8 +47,27 @@
     </b-media>
 
     <!-- User Info: Input Fields -->
-    <b-form>
+    <b-form
+      @submit.prevent="onSubmit"
+    >
       <b-row>
+        <!-- Field: Email -->
+        <b-col
+          cols="12"
+          md="4"
+        >
+          <b-form-group
+            label="Email"
+            label-for="email"
+          >
+            <b-form-input
+              id="email"
+              v-model="userData.email"
+              type="email"
+              readonly
+            />
+          </b-form-group>
+        </b-col>
 
         <!-- Field: Username -->
         <b-col
@@ -78,23 +97,6 @@
             <b-form-input
               id="full-name"
               v-model="userData.fullName"
-            />
-          </b-form-group>
-        </b-col>
-
-        <!-- Field: Email -->
-        <b-col
-          cols="12"
-          md="4"
-        >
-          <b-form-group
-            label="Email"
-            label-for="email"
-          >
-            <b-form-input
-              id="email"
-              v-model="userData.email"
-              type="email"
             />
           </b-form-group>
         </b-col>
@@ -156,52 +158,53 @@
         </b-col>
 
       </b-row>
-    </b-form>
 
-    <!-- PERMISSION TABLE -->
-    <b-card
-      no-body
-      class="border mt-1"
-    >
-      <b-card-header class="p-1">
-        <b-card-title class="font-medium-2">
-          <feather-icon
-            icon="LockIcon"
-            size="18"
-          />
-          <span class="align-middle ml-50">Permission</span>
-        </b-card-title>
-      </b-card-header>
-      <b-table
-        striped
-        responsive
-        class="mb-0"
-        :items="permissionsData"
+      <!-- PERMISSION TABLE -->
+      <b-card
+        no-body
+        class="border mt-1"
       >
-        <template #cell(module)="data">
-          {{ data.value }}
-        </template>
-        <template #cell()="data">
-          <b-form-checkbox :checked="data.value" />
-        </template>
-      </b-table>
-    </b-card>
+        <b-card-header class="p-1">
+          <b-card-title class="font-medium-2">
+            <feather-icon
+              icon="LockIcon"
+              size="18"
+            />
+            <span class="align-middle ml-50">Permission</span>
+          </b-card-title>
+        </b-card-header>
+        <b-table
+          striped
+          responsive
+          class="mb-0"
+          :items="permissionsData"
+        >
+          <template #cell(module)="data">
+            {{ data.value }}
+          </template>
+          <template #cell()="data">
+            <b-form-checkbox :checked="data.value" />
+          </template>
+        </b-table>
+      </b-card>
 
-    <!-- Action Buttons -->
-    <b-button
-      variant="primary"
-      class="mb-1 mb-sm-0 mr-0 mr-sm-1"
-      :block="$store.getters['app/currentBreakPoint'] === 'xs'"
-    >
-      Save Changes
-    </b-button>
-    <b-button
-      variant="outline-secondary"
-      type="reset"
-      :block="$store.getters['app/currentBreakPoint'] === 'xs'"
-    >
-      Reset
-    </b-button>
+      <!-- Action Buttons -->
+      <b-button
+        type="submit"
+        variant="primary"
+        class="mb-1 mb-sm-0 mr-0 mr-sm-1"
+        :block="$store.getters['app/currentBreakPoint'] === 'xs'"
+      >
+        Save Changes
+      </b-button>
+      <b-button
+        variant="outline-secondary"
+        type="reset"
+        :block="$store.getters['app/currentBreakPoint'] === 'xs'"
+      >
+        Reset
+      </b-button>
+    </b-form>
   </div>
 </template>
 
@@ -213,6 +216,10 @@ import { avatarText } from '@core/utils/filter'
 import vSelect from 'vue-select'
 import { useInputImageRenderer } from '@core/comp-functions/forms/form-utils'
 import { ref } from '@vue/composition-api'
+import store from '@/store'
+// Notification
+import { useToast } from 'vue-toastification/composition'
+import ToastificationContent from '@core/components/toastification/ToastificationContent.vue'
 import useUsersList from '../users-list/useUsersList'
 
 export default {
@@ -240,7 +247,7 @@ export default {
   },
   setup(props) {
     const { resolveUserRoleVariant } = useUsersList()
-
+    const toast = useToast()
     const roleOptions = [
       { label: 'Admin', value: 'admin' },
       { label: 'Author', value: 'author' },
@@ -302,6 +309,21 @@ export default {
       props.userData.avatar = base64
     })
 
+    const onSubmit = () => {
+      // console.log('userData', props.userData)
+      store.dispatch('app-user/updateUser', props.userData)
+        .then(() => {
+          toast({
+            component: ToastificationContent,
+            props: {
+              title: 'Success update user account',
+              icon: 'AlertTriangleIcon',
+              variant: 'primary',
+            },
+          })
+        })
+    }
+
     return {
       resolveUserRoleVariant,
       avatarText,
@@ -313,6 +335,9 @@ export default {
       refInputEl,
       previewEl,
       inputImageRenderer,
+
+      //
+      onSubmit,
     }
   },
 }

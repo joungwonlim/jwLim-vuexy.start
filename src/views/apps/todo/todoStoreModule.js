@@ -7,9 +7,10 @@ export default {
   mutations: {},
   actions: {
     fetchTasks(ctx, payload) {
+      // console.log(payload)
       return new Promise((resolve, reject) => {
         axios
-          .get('/apps/todo/tasks', { params: payload })
+          .get('/app/todo/tasks', { params: payload })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -17,7 +18,7 @@ export default {
     addTask(ctx, taskData) {
       return new Promise((resolve, reject) => {
         axios
-          .post('/apps/todo/tasks', { task: taskData })
+          .post('/app/todo/tasks', { task: taskData })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -25,7 +26,7 @@ export default {
     updateTask(ctx, { task }) {
       return new Promise((resolve, reject) => {
         axios
-          .post(`/apps/todo/tasks/${task.id}`, { task })
+          .put(`/app/todo/tasks/${task.id}`, { task })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -33,7 +34,7 @@ export default {
     removeTask(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .delete(`/apps/todo/tasks/${id}`)
+          .delete(`/app/todo/tasks/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })

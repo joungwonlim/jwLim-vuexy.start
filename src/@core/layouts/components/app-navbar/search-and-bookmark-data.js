@@ -42,7 +42,7 @@ export default {
       { title: 'Drag & Drop', route: { name: 'extensions-drag-and-drop' }, icon: 'CopyIcon', isBookmarked: false },
       { title: 'Dropdown', route: { name: 'components-dropdown' }, icon: 'MoreHorizontalIcon', isBookmarked: false },
       { title: 'Echart', route: { name: 'charts-echart' }, icon: 'PieChartIcon', isBookmarked: false },
-      { title: 'Email', route: { name: 'apps-email' }, icon: 'MailIcon', isBookmarked: true },
+      // { title: 'Email', route: { name: 'apps-email' }, icon: 'MailIcon', isBookmarked: true },
       { title: 'Embed', route: { name: 'components-embed' }, icon: 'TvIcon', isBookmarked: false },
       { title: 'Error 404', route: { name: 'error-404' }, icon: 'AlertTriangleIcon', isBookmarked: false },
       { title: 'Error', route: { name: 'misc-error' }, icon: 'AlertTriangleIcon', isBookmarked: false },

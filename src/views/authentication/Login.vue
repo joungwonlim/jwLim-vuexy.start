@@ -6,7 +6,7 @@
       <b-link class="brand-logo">
         <vuexy-logo />
         <h2 class="brand-text text-primary ml-1">
-          Vuexy
+          Willy Dreams
         </h2>
       </b-link>
       <!-- /Brand logo-->
@@ -277,11 +277,15 @@ export default {
     login() {
       this.$refs.loginForm.validate().then(success => {
         if (success) {
+          // console.log(this.userEmail)
+
           useJwt.login({
             email: this.userEmail,
             password: this.password,
           })
             .then(response => {
+              // console.log(response)
+
               const { userData } = response.data
               useJwt.setToken(response.data.accessToken)
               useJwt.setRefreshToken(response.data.refreshToken)

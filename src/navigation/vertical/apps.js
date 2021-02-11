@@ -2,11 +2,11 @@ export default [
   {
     header: 'Apps',
   },
-  {
-    title: 'Email',
-    route: 'apps-email',
-    icon: 'MailIcon',
-  },
+  // {
+  //   title: 'Email',
+  //   route: 'apps-email',
+  //   icon: 'MailIcon',
+  // },
   {
     title: 'Chat',
     route: 'apps-chat',

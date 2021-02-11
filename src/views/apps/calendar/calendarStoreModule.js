@@ -37,7 +37,7 @@ export default {
     fetchEvents(ctx, { calendars }) {
       return new Promise((resolve, reject) => {
         axios
-          .get('/apps/calendar/events', {
+          .get('/app/calendar/events', {
             params: {
               calendars: calendars.join(','),
             },
@@ -49,7 +49,7 @@ export default {
     addEvent(ctx, { event }) {
       return new Promise((resolve, reject) => {
         axios
-          .post('/apps/calendar/events', { event })
+          .post('/app/calendar/events', { event })
           .then(response => resolve(response))
           .catch(error => reject(error))
       })
@@ -57,15 +57,18 @@ export default {
     updateEvent(ctx, { event }) {
       return new Promise((resolve, reject) => {
         axios
-          .post(`/apps/calendar/events/${event.id}`, { event })
-          .then(response => resolve(response))
+          .put(`/app/calendar/events/${event.id}`, { event })
+          .then(response => {
+            // console.log(response)
+            resolve(response)
+          })
           .catch(error => reject(error))
       })
     },
     removeEvent(ctx, { id }) {
       return new Promise((resolve, reject) => {
         axios
-          .delete(`/apps/calendar/events/${id}`)
+          .delete(`/app/calendar/events/${id}`)
           .then(response => resolve(response))
           .catch(error => reject(error))
       })

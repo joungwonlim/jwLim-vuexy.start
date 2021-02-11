@@ -52,7 +52,10 @@
           />
           <span class="d-none d-sm-inline">Information</span>
         </template>
-        <user-edit-tab-information class="mt-2 pt-75" />
+        <user-edit-tab-information
+          :user-data="userData"
+          class="mt-2 pt-75"
+        />
       </b-tab>
 
       <!-- Tab: Social -->

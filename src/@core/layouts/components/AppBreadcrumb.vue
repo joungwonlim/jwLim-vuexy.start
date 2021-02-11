@@ -76,7 +76,7 @@
           />
           <span class="align-middle ml-50">Chat</span>
         </b-dropdown-item>
-
+        <!--
         <b-dropdown-item :to="{ name: 'apps-email' }">
           <feather-icon
             icon="MailIcon"
@@ -84,6 +84,7 @@
           />
           <span class="align-middle ml-50">Email</span>
         </b-dropdown-item>
+        -->
 
         <b-dropdown-item :to="{ name: 'apps-calendar' }">
           <feather-icon
