@@ -27,7 +27,7 @@
       </b-avatar>
     </template>
 
-    <b-dropdown-item
+    <!-- <b-dropdown-item
       :to="{ name: 'apps-email' }"
       link-class="d-flex align-items-center"
     >
@@ -37,6 +37,17 @@
         class="mr-50"
       />
       <span>Inbox</span>
+    </b-dropdown-item> -->
+    <b-dropdown-item
+      :to="{ name: 'apps-calendar' }"
+      link-class="d-flex align-items-center"
+    >
+      <feather-icon
+        size="16"
+        icon="CalendarIcon"
+        class="mr-50"
+      />
+      <span>Calendar</span>
     </b-dropdown-item>
     <b-dropdown-item
       :to="{ name: 'apps-todo' }"
@@ -47,9 +58,9 @@
         icon="CheckSquareIcon"
         class="mr-50"
       />
-      <span>Task</span>
+      <span>Todo</span>
     </b-dropdown-item>
-    <b-dropdown-item
+    <!-- <b-dropdown-item
       :to="{ name: 'apps-chat' }"
       link-class="d-flex align-items-center"
     >
@@ -59,7 +70,7 @@
         class="mr-50"
       />
       <span>Chat</span>
-    </b-dropdown-item>
+    </b-dropdown-item> -->
 
     <b-dropdown-divider />
 

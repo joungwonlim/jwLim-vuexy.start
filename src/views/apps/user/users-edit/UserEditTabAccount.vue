@@ -310,6 +310,8 @@ export default {
     })
 
     const onSubmit = () => {
+      console.log('permissionsData', permissionsData)
+
       // console.log('userData', props.userData)
       store.dispatch('app-user/updateUser', props.userData)
         .then(() => {

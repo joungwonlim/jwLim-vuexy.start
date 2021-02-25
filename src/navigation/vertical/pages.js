@@ -1,11 +1,11 @@
 export default [
   {
-    header: 'Administrator',
+    header: 'Pages',
   },
 
   {
-    title: 'Authentication',
-    icon: 'CircleIcon',
+    title: 'Account',
+    icon: 'LogInIcon',
     children: [
       {
         title: 'Login',
@@ -31,7 +31,7 @@ export default [
   },
   {
     title: 'Miscellaneous',
-    icon: 'CircleIcon',
+    icon: 'TriangleIcon',
     children: [
       {
         title: 'Coming Soon',

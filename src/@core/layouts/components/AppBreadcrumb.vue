@@ -69,13 +69,13 @@
           <span class="align-middle ml-50">Todo</span>
         </b-dropdown-item>
 
-        <b-dropdown-item :to="{ name: 'apps-chat' }">
+        <!-- <b-dropdown-item :to="{ name: 'apps-chat' }">
           <feather-icon
             icon="MessageSquareIcon"
             size="16"
           />
           <span class="align-middle ml-50">Chat</span>
-        </b-dropdown-item>
+        </b-dropdown-item> -->
         <!--
         <b-dropdown-item :to="{ name: 'apps-email' }">
           <feather-icon

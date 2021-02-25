@@ -5,8 +5,8 @@ export default [
     component: () => import('@/views/authentication/Login.vue'),
     meta: {
       layout: 'full',
-      resource: 'Auth',
-      redirectIfLoggedIn: true,
+      // resource: 'Auth',
+      // redirectIfLoggedIn: true,
     },
   },
   {
@@ -15,8 +15,8 @@ export default [
     component: () => import('@/views/authentication/Register.vue'),
     meta: {
       layout: 'full',
-      resource: 'Auth',
-      redirectIfLoggedIn: true,
+      // resource: 'Auth',
+      // redirectIfLoggedIn: true,
     },
   },
   {
@@ -25,8 +25,8 @@ export default [
     component: () => import('@/views/authentication/ForgotPassword.vue'),
     meta: {
       layout: 'full',
-      resource: 'Auth',
-      redirectIfLoggedIn: true,
+      // resource: 'Auth',
+      // redirectIfLoggedIn: true,
     },
   },
   {

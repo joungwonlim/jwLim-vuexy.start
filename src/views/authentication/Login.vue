@@ -292,6 +292,7 @@ export default {
               localStorage.setItem('userData', JSON.stringify(userData))
               this.$ability.update(userData.ability)
 
+              // console.log('here')
               // ? This is just for demo purpose as well.
               // ? Because we are showing eCommerce app's cart items count in navbar
               // this.$store.commit('app-ecommerce/UPDATE_CART_ITEMS_COUNT', userData.extras.eCommerceCartItemsCount)
@@ -313,6 +314,9 @@ export default {
                 .catch(error => {
                   this.$refs.loginForm.setErrors(error.response.data.error)
                 })
+            })
+            .catch(error => {
+              console.log(error.message)
             })
         }
       })

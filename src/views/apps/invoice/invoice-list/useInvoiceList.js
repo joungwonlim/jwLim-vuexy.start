@@ -67,7 +67,7 @@ export default function useInvoicesList() {
         toast({
           component: ToastificationContent,
           props: {
-            title: "Error fetching invoices' list",
+            title: "Error fetching invoices' list++++++++",
             icon: 'AlertTriangleIcon',
             variant: 'danger',
           },

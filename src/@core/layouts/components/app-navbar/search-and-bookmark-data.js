@@ -28,7 +28,7 @@ export default {
       { title: 'Card Actions', route: { name: 'card-action' }, icon: 'CreditCardIcon', isBookmarked: false },
       { title: 'Carousel', route: { name: 'components-carousel' }, icon: 'CopyIcon', isBookmarked: false },
       { title: 'Chartjs', route: { name: 'charts-chartjs' }, icon: 'PieChartIcon', isBookmarked: false },
-      { title: 'Chat', route: { name: 'apps-chat' }, icon: 'MessageSquareIcon', isBookmarked: true },
+      // { title: 'Chat', route: { name: 'apps-chat' }, icon: 'MessageSquareIcon', isBookmarked: true },
       { title: 'Checkbox', route: { name: 'forms-element-checkbox' }, icon: 'CheckSquareIcon', isBookmarked: false },
       { title: 'Checkout', route: { name: 'apps-e-commerce-checkout' }, icon: 'DollarSignIcon', isBookmarked: false },
       { title: 'Clipboard', route: { name: 'extensions-clipboard' }, icon: 'ClipboardIcon', isBookmarked: false },

@@ -32,11 +32,13 @@ tagVariant
 */
 import dashboard from './dashboard'
 import apps from './apps'
-import authentication from './authentication'
+import pages from './pages'
+import administrator from './administrator'
 
 // Array of sections
 export default [
   ...dashboard,
   ...apps,
-  ...authentication,
+  ...pages,
+  ...administrator,
 ]
